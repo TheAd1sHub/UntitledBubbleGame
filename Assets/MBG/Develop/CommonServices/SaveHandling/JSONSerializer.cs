@@ -7,7 +7,7 @@ namespace Assets.MBG.Develop.CommonServices.SaveHandling
         private static JsonSerializerSettings FormatterSettings => new JsonSerializerSettings()
         {
             Culture = System.Globalization.CultureInfo.InvariantCulture,
-            TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Full
+            TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Full,
         };
 
         public static string Serialize<T>(T @object)
