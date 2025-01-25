@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Assets.MBG.Develop.MarkerScripts;
+using System;
 using UnityEngine;
 
-namespace Assets.MBG.Develop
+namespace Assets.MBG.Develop.BaseBehaviours
 {
     public class Damageable : MonoBehaviour
     {
@@ -17,7 +18,7 @@ namespace Assets.MBG.Develop
             Health -= damage;
             Damaged?.Invoke();
 
-            if(Health <= 0 ) 
+            if (Health <= 0)
                 Killed?.Invoke();
         }
 
@@ -36,10 +37,10 @@ namespace Assets.MBG.Develop
             Damaged += OnDamaged;
             Killed += OnKilled;
 
-            if (TryGetComponent<Player>(out Player player) == false)
+            if (TryGetComponent(out Player player) == false)
                 return;
 
-           _player = player;
+            _player = player;
             Health = player.Durability;
         }
 

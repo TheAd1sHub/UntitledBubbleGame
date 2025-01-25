@@ -1,5 +1,6 @@
 ﻿#define TEST_IMPLEMENTATION
 
+using Assets.MBG.Develop.MarkerScripts;
 using System;
 using UnityEngine;
 

@@ -1,8 +1,8 @@
+using Assets.MBG.Develop.Items;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
-namespace Assets.MBG.Develop
+namespace Assets.MBG.Develop.MarkerScripts
 {
     [RequireComponent(typeof(PlayerMovement))]
     public class Player : MonoBehaviour
@@ -20,7 +20,7 @@ namespace Assets.MBG.Develop
         private void Awake()
         {
             PlayerMovement = GetComponent<PlayerMovement>();
-            
+
             AssignStats();
         }
         private void AssignStats()

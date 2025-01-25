@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.MBG.Develop
+namespace Assets.MBG.Develop.BaseBehaviours
 {
     [RequireComponent(typeof(Collider))]
     public class DamagingOnCollision : MonoBehaviour
@@ -9,7 +9,7 @@ namespace Assets.MBG.Develop
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent<Damageable>(out Damageable damageable) == false)
+            if (other.TryGetComponent(out Damageable damageable) == false)
                 return;
             damageable.ApplyDamage(_damage);
         }
