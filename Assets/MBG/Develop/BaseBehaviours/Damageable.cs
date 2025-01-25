@@ -8,10 +8,8 @@ namespace Assets.MBG.Develop.BaseBehaviours
     {
         public event Action Damaged;
         public event Action Killed;
-
-        private Player _player;
-
-        public int Health;
+        
+        public int Health { get; private set; }
 
         public void ApplyDamage(int damage)
         {
@@ -22,15 +20,9 @@ namespace Assets.MBG.Develop.BaseBehaviours
                 Killed?.Invoke();
         }
 
-        private void OnDamaged()
-        {
+        private void OnDamaged() { print("got dmgd"); }
 
-        }
-
-        private void OnKilled()
-        {
-            Debug.Log("u ded");
-        }
+        private void OnKilled() { }
 
         private void Start()
         {
@@ -40,7 +32,6 @@ namespace Assets.MBG.Develop.BaseBehaviours
             if (TryGetComponent(out Player player) == false)
                 return;
 
-            _player = player;
             Health = player.Durability;
         }
 

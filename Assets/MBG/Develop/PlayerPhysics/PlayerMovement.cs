@@ -11,20 +11,51 @@ namespace Assets.MBG.Develop
     {
         public event Action<Vector3> MovedHorizontally;
 
+        [SerializeField] private float _ventResistance;
+
         private Vector3 _direction;
+        private Vector3 _externalForce;
 
         private Player _player;
         private Rigidbody _rigidbody;
 
-#if TEST_IMPLEMENTATION
+        public void ApplyForce(Vector3 force)
+        {
+            _externalForce += force;
+        }
+
+        private void OnMovedHorizontally(Vector3 direction) => _direction = direction;
+
         private void FixedUpdate()
         {
+            Vector3 movement = Vector3.up * _player.VerticalSpeed;
+
             if (_direction != Vector3.zero)
-                //_rigidbody.AddForce(_direction * _player.Speed);
-                _rigidbody.linearVelocity = _direction * _player.Speed;
+            {
+                Vector3 targetHorizontalVelocity = _direction * _player.HorizontalSpeed;
+                Vector3 currentHorizontalVelocity = new(_rigidbody.linearVelocity.x, 0, _rigidbody.linearVelocity.z);
+
+                Vector3 newHorizontalVelocity = Vector3.Lerp(currentHorizontalVelocity, targetHorizontalVelocity, _player.Responsiveness * Time.fixedDeltaTime);
+
+                movement += newHorizontalVelocity;
+            }
             else
-                _rigidbody.linearVelocity = Vector3.Lerp(_rigidbody.linearVelocity, Vector3.zero, _player.Responsiveness * Time.fixedDeltaTime);
+            {
+                Vector3 horizontalVelocity = new(_rigidbody.linearVelocity.x, 0, _rigidbody.linearVelocity.z);
+
+                horizontalVelocity = Vector3.Lerp(horizontalVelocity, Vector3.zero, _player.Responsiveness);
+
+                movement += horizontalVelocity;
+            }
+
+            movement += _externalForce;
+
+            _rigidbody.linearVelocity = movement;
+
+            _externalForce = Vector3.Lerp(_externalForce, Vector3.zero, _ventResistance);
+
         }
+#if TEST_IMPLEMENTATION
         private void Update()
         {
             if (Input.GetKey(KeyCode.A))
@@ -43,7 +74,6 @@ namespace Assets.MBG.Develop
             MovedHorizontally += OnMovedHorizontally;
         }
 
-        private void OnMovedHorizontally(Vector3 direction) => _direction = direction;
     }
     public interface IInputHandler
     {
