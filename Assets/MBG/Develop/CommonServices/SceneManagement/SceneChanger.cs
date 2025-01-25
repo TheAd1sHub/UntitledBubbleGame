@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.MBG.Develop.CommonServices.SceneManagement
 {
-    public static class SceneLoader
+    public static class SceneChanger
     {
         public static IEnumerator LoadSceneAsync(SceneID scene, LoadSceneMode mode = LoadSceneMode.Single)
             => LoadSceneAsync(scene, mode);
