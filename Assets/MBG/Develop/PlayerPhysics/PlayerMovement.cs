@@ -3,13 +3,15 @@
 using Assets.MBG.Develop.MarkerScripts;
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Assets.MBG.Develop
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class PlayerMovement : MonoBehaviour, IInputHandler
+    public class PlayerMovement : MonoBehaviour
     {
-        public event Action<Vector3> MovedHorizontally;
+        private PlayerInputSystem _playerInputSystem;
+        private InputAction _move;
 
         [SerializeField] private float _ventResistance;
 
@@ -55,28 +57,39 @@ namespace Assets.MBG.Develop
             _externalForce = Vector3.Lerp(_externalForce, Vector3.zero, _ventResistance);
 
         }
-#if TEST_IMPLEMENTATION
         private void Update()
         {
+#if TEST_IMPLEMENTATION == false
             if (Input.GetKey(KeyCode.A))
                 _direction = Vector3.left;
             else if (Input.GetKey(KeyCode.D))
                 _direction = Vector3.right;
             else
                 _direction = Vector3.zero;
-        }
+#else
+            _direction = _move.ReadValue<Vector2>();
 #endif
+        }
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody>();
             _player = GetComponent<Player>();
-
-            MovedHorizontally += OnMovedHorizontally;
         }
 
-    }
-    public interface IInputHandler
-    {
-        public event Action<Vector3> MovedHorizontally;
+        private void OnEnable()
+        {
+            _move = _playerInputSystem.Player.Move;
+            _move.Enable();
+        }
+
+        private void OnDisable()
+        {
+            _move.Disable();
+        }
+
+        private void Awake()
+        {
+            _playerInputSystem = new();
+        }
     }
 }
