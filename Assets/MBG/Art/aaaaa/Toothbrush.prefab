@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2372587389214228080
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 7b360b0734d829f499e1ada6c3062703, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b360b0734d829f499e1ada6c3062703, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b360b0734d829f499e1ada6c3062703, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.387264
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b360b0734d829f499e1ada6c3062703, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6532815
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b360b0734d829f499e1ada6c3062703, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.27059805
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b360b0734d829f499e1ada6c3062703, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6532815
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b360b0734d829f499e1ada6c3062703, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.27059805
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b360b0734d829f499e1ada6c3062703, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b360b0734d829f499e1ada6c3062703, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b360b0734d829f499e1ada6c3062703, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7b360b0734d829f499e1ada6c3062703, type: 3}
+      propertyPath: m_Name
+      value: Toothbrush
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7b360b0734d829f499e1ada6c3062703, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1828405595108592055}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7b360b0734d829f499e1ada6c3062703, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -8529361490742928754}
+  m_SourcePrefab: {fileID: 100100000, guid: 7b360b0734d829f499e1ada6c3062703, type: 3}
+--- !u!1 &3183049298986287905 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7b360b0734d829f499e1ada6c3062703, type: 3}
+  m_PrefabInstance: {fileID: 2372587389214228080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1828405595108592055
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3183049298986287905}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0110065555, y: 0.0015528047, z: 0.017943578}
+  m_Center: {x: -0.0050077266, y: -0.00032360494, z: 0.0102589615}
+--- !u!114 &-8529361490742928754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3183049298986287905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf871a0828f204c4a9ff16ff0685df29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 1
