@@ -1,4 +1,5 @@
-﻿using Assets.MBG.Develop.MarkerScripts;
+﻿using Assets.MBG.Develop.CommonServices.SceneManagement;
+using Assets.MBG.Develop.MarkerScripts;
 using System;
 using UnityEngine;
 
@@ -13,16 +14,19 @@ namespace Assets.MBG.Develop.BaseBehaviours
 
         public void ApplyDamage(int damage)
         {
+            if (Health <= 0)
+                return;
+
             Health -= damage;
             Damaged?.Invoke();
 
             if (Health <= 0)
-                Killed?.Invoke();
+                StartCoroutine(SceneChanger.LoadSceneAsync(SceneID.CustomizationMenu.ToString()));
         }
 
         private void OnDamaged() { print("got dmgd"); }
 
-        private void OnKilled() { }
+        private void OnKilled() { StartCoroutine(SceneChanger.LoadSceneAsync(SceneID.CustomizationMenu)); }
 
         private void Start()
         {

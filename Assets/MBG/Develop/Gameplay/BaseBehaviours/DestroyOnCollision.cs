@@ -1,5 +1,6 @@
 ﻿#define WORKAROUND
 
+using Assets.MBG.Develop.CommonServices.SceneManagement;
 using Assets.MBG.Develop.MarkerScripts;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ namespace Assets.MBG.Develop.BaseBehaviours
 
             Destroy(gameObject);
             print("destroyed");
+            StartCoroutine(SceneChanger.LoadSceneAsync("VictoryScreen"));
         }
     }
 }
