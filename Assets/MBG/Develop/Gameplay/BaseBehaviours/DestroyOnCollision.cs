@@ -14,6 +14,7 @@ namespace Assets.MBG.Develop.BaseBehaviours
                 return;
 
             Destroy(gameObject);
+            print("destroyed");
         }
     }
 }
