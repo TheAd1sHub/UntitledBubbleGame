@@ -40,9 +40,9 @@ namespace Assets.MBG.Develop.CommonServices.SaveHandling
         };
 
         public static string SavePath => Path.Combine(Application.persistentDataPath, "save.json");
-
+        
         public PlayerConfig Load()
-        {
+        { 
             LastSaveData = File.Exists(SavePath)
                 ? JSONSerializer.Deserialize<PlayerConfig>(File.ReadAllText(SavePath))
                 : DefaultConfig;
