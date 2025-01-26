@@ -18,7 +18,10 @@ public class UIManager : MonoBehaviour
     public GameObject bubbleMeshPrefab;
     [Header("FX")]
     public ParticleSystem bubbleParticles;
+
+    [Header("Sound")]
     public AudioClip bubbleSound;
+    public AudioClip inflateSound;
     public TMP_Text recipeText;
     public int ingidientsCount;
 
@@ -65,6 +68,9 @@ public class UIManager : MonoBehaviour
 
         //set def mat
         currentMat = materialsBubble[0];
+
+        sizeSlider.interactable = false;
+
     }
 
     private void Update()
@@ -116,6 +122,9 @@ public class UIManager : MonoBehaviour
             // Set the new scale on the bubble
             bubble.localScale = new Vector3(scale, scale, scale);
 
+            if (value < 10f || value==0)
+                effectsSource.PlayOneShot(inflateSound);
+
             if (value == 10f && bubbleMesh != null)
             {
                 Destroy(bubbleMesh);
@@ -141,6 +150,7 @@ public class UIManager : MonoBehaviour
     public void CleanText()
     {
         StopBlinking();
+        sizeSlider.interactable = true;
         bubbleMesh.SetActive(true);
         bubbleMeshPrefab.SetActive(true);
         mixerText.text = "It's " + recipeText.text + ". Try inflate it!";
