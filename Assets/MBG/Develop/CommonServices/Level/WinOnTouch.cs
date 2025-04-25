@@ -9,7 +9,7 @@ public class WinOnTouch : MonoBehaviour
         // Check if the object entering the trigger is the player
         if (other.CompareTag(playerTag))
         {
-            Debug.Log("You Win!");
+            //Debug.Log("You Win!");
             WinGame();
         }
     }
@@ -22,5 +22,7 @@ public class WinOnTouch : MonoBehaviour
 
         // Example: Restart the scene
         // UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("VictoryScreen");
     }
 }

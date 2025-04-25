@@ -8,7 +8,7 @@ namespace Assets.MBG.Develop.BaseBehaviours
     public class Damageable : MonoBehaviour
     {
         public event Action Damaged;
-        public event Action Killed;
+        // public event Action Killed;
         
         public int Health { get; private set; }
 
@@ -31,7 +31,7 @@ namespace Assets.MBG.Develop.BaseBehaviours
         private void Start()
         {
             Damaged += OnDamaged;
-            Killed += OnKilled;
+            // Killed += OnKilled;
 
             if (TryGetComponent(out Player player) == false)
                 return;
